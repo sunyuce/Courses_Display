@@ -22,7 +22,8 @@ option = {
       // formatter: (value) => {
       //   return value < 0 ? value * -1 : value;
       // },
-      rotate:0 //设置标签倾斜
+      rotate:0, //设置标签倾斜
+      position:'right'
     }
   },
   xAxis: {
