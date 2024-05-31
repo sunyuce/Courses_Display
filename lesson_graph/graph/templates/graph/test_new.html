@@ -28,28 +28,45 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            padding: 20px;
+            padding: 10px;
             box-sizing: border-box;
         }
         #controls {
-            margin: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            align-self: center;
+            position: absolute; /* 绝对定位 */
+            top: 10px; /* 距离顶部的距离 */
+            left: 10px; /* 距离左侧的距离 */
+            z-index: 10; /* 确保控件在图表之上 */
+            opacity: 0.1; /* 初始透明度设置为0.1 */
+            transition: opacity 0.5s ease-in-out; /* 过渡效果 */
+            background-color: rgba(255, 255, 255, 0.8); /* 半透明背景 */
+            padding: 15px; /* 内边距 */
+            border-radius: 8px; /* 圆角 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
         }
+
+        #controls:hover {
+            opacity: 1; /* 悬停时透明度变为1 */
+        }
+
         #school-select {
-            padding: 10px;
-            border: 2px solid #4CAF50;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
+            padding: 10px; /* 内边距 */
+            border: 2px solid #4caf50; /* 边框颜色 */
+            border-radius: 5px; /* 圆角 */
+            font-size: 16px; /* 字体大小 */
+            cursor: pointer; /* 指针形状 */
+            background-color: #fff; /* 背景颜色 */
+            color: #333; /* 字体颜色 */
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* 过渡效果 */
+        }
+
+        #school-select:hover {
+            background-color: #4caf50; /* 悬停时背景颜色 */
+            color: #fff; /* 悬停时字体颜色 */
+            border-color: #388e3c; /* 悬停时边框颜色 */
         }
         #graph-container {
-            width: 100%;
-            height: 80vh;
+            width: 95%;
+            height: 95vh;
             border: 2px solid #4CAF50;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -62,59 +79,62 @@
             align-items: center;
         }
         #searchgraph-container {
-            width: 80%;
-            height: 40vh;
-            border: 2px solid #4CAF50;
+            width: 100%;
+            height: 45vh;
+            border: 2px solid #1c86ee;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             background-color: white;
-            padding: 10px;
+            /*padding: 10px;*/
             position: relative;
             overflow: hidden;
             align-self: flex-start;
             justify-content: center;
             align-items: center;
-            margin-bottom: 2%;
+            margin: 0;
+            /*margin-bottom: 2%;*/
         }
         .search-container {
             display: flex;
             flex-direction: row;
-            width: 60%;
-            height: 5%;
-            margin-left: 20%;
-            margin-bottom: 3%;
-            margin-top: 5%;
+            position: absolute; /* 绝对定位 */
+            top: 5px; /* 距离顶部的距离 */
+            left: 5px; /* 距离左侧的距离 */
+            z-index: 10; /* 确保控件在图表之上 */
+            opacity: 0.1; /* 初始透明度设置为0.1 */
+            transition: opacity 0.5s ease-in-out; /* 过渡效果 */
+            background-color: rgba(255, 255, 255, 0.8); /* 半透明背景 */
+            padding: 5px; /* 内边距 */
+            border-radius: 8px; /* 圆角 */
+            /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); !* 阴影效果 *!*/
+        }
+
+        .search-container:hover {
+            opacity: 1; /* 悬停时透明度变为1 */
         }
         #search-input {
-            width: 45%;
-            padding: 15px;
-            border: 2px solid #4CAF50;
+            width: 55%;
+            padding: 10px;
+            border: 2px solid #1e90ff;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 16px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             outline: none;
             transition: border-color 0.3s;
         }
         #search-input:focus {
-            border-color: #45a049;
+            border-color: #1c86ee;
         }
         #search-button {
-            padding: 15px 20px;
-            border: 2px solid #4CAF50;
+            padding: 10px 15px;
+            border: 2px solid #1e90ff;
             border-radius: 0 10px 10px 0;
-            background-color: #4CAF50;
+            background-color: #1c86ee;
             color: white;
-            font-size: 18px;
+            font-size: 16px;
             cursor: pointer;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s, border-color 0.3s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        #search-button:hover {
-            background-color: #45a049;
-            border-color: #45a049;
         }
         .picture{
             background: #1f77b4;
@@ -151,25 +171,25 @@
 </head>
 <body>
 <div id="left-section">
-    <div id="controls">
-    <label for="school-select">选择学院: </label>
-    <select id="school-select">
-        <option value="计算机与计算科学学院">计算机与计算科学学院</option>
-        <option value="法学院">法学院</option>
-        <option value="医学院">医学院</option>
-    </select>
-    </div>
     <div id="graph-container">
+        <div id="controls">
+        <label for="school-select">选择学院: </label>
+        <select id="school-select">
+            <option value="计算机与计算科学学院">计算机与计算科学学院</option>
+            <option value="法学院">法学院</option>
+            <option value="医学院">医学院</option>
+        </select>
+        </div>
         <div id="graph" style="width: 100%; height: 100%;"></div>
         <div class="loader" id="loader"></div>
     </div>
 </div>
 <div id="right-section">
-    <div class="search-container">
+    <div id="searchgraph-container">
+        <div class="search-container">
         <input type="text" id="search-input" placeholder="输入你想查看的课程">
         <button id="search-button">搜索</button>
     </div>
-    <div id="searchgraph-container">
         <div id="searchgraph" style="width: 100%; height: 100%;"></div>
     </div>
     <div class="picture">

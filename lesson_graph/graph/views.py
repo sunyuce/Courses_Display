@@ -41,4 +41,4 @@ def get_graph_data(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         return JsonResponse(context)
     else:
-        return render(request, 'graph/test_new.html', context)
+        return render(request, 'graph/test_delicate.html', context)
