@@ -140,11 +140,15 @@
       }
 
       .bar{
+        position: absolute;
         margin: 0;
         /*background: #1f77b4;*/
-        height: 55%;
-        width: 100%;
-        align-self: flex-start;
+        top: 45%;
+        left: 54%;
+        height: 50%;
+        width: 46%;
+        align-self: center;
+        overflow: auto; /* 添加此属性以显示滚动条 */
       }
 
       @keyframes spin {
@@ -189,9 +193,10 @@
         </div>
         <div id="searchgraph" style="width: 100%; height: 100%"></div>
       </div>
-      <!-- 课程难度模块 -->
-      <div class="bar">
-        <div id="difficulty" style="width: 100%; height: 100%;align-self: flex-start"></div>
+    </div>
+    <!-- 课程难度模块 -->
+    <div class="bar">
+        <div id="difficulty" style="width: 100%; height: 100%;"></div>
         <script src="../../../static/script/bar.js"></script>
         <script>
           document
@@ -209,7 +214,6 @@
             })
         </script>
       </div>
-    </div>
     <!---->
   </body>
 </html>

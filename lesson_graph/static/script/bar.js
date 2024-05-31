@@ -101,7 +101,7 @@ option = {
         textStyle: {
           //数值样式
           color: 'black', //字体颜色
-          fontSize: 8 //字体大小
+          fontSize: 15 //字体大小
         }
       }
     }
