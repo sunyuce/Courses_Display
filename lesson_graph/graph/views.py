@@ -6,18 +6,35 @@ from .neo4j_driver import graph_db
 def get_graph_data(request):
     school = request.GET.get('school', '计算机与计算科学学院')
 
-    query = f"""
+    # 查询所有节点
+    nodes_query = f"""
+    MATCH (n:LessonNode)
+    WHERE n.school = '{school}'
+    RETURN n
+    """
+    nodes_result = graph_db.run(nodes_query)
+
+    # 查询所有关系
+    relationships_query = f"""
     MATCH (n:LessonNode)-[r:RELATED_TO]->(m:LessonNode)
     WHERE n.school = '{school}' AND m.school = '{school}'
     RETURN n, r, m
     """
-    result = graph_db.run(query)
+    relationships_result = graph_db.run(relationships_query)
 
     nodes = []
     edges = []
     node_ids = set()
 
-    for record in result:
+    # 处理节点结果
+    for record in nodes_result:
+        node = record['n']
+        if node.identity not in node_ids:
+            nodes.append({"id": node.identity, "label": node['classname'], "school": node['school']})
+            node_ids.add(node.identity)
+
+    # 处理关系结果
+    for record in relationships_result:
         node1 = record['n']
         node2 = record['m']
         rel = record['r']
@@ -42,3 +59,4 @@ def get_graph_data(request):
         return JsonResponse(context)
     else:
         return render(request, 'graph/test_delicate.html', context)
+
