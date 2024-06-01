@@ -4,3 +4,6 @@ This is a project from BigTao and BigCe せんせい
 在/graph文件夹下的views.py文件下最后位置修改需要展示的前端页面路径  
 配置完后，在终端中cd lesson_graph，pythton manage.py runserver就可以在终端弹出的网址看到想要的结果了  
 
+本项目中采用的是python3.8 neo4j5.20 但是版本应该问题不大  
+
+
