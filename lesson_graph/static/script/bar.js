@@ -237,7 +237,7 @@ function initChart(chartType){
         type: 'category',
         data: [
           '护理专业实践(II)',
-          '诊断学II实验	',
+          '诊断学II实验',
           '微生物及免疫学实验',
           '生物药剂学与药物动力学实验',
           '有机化学实验(甲)',
@@ -338,5 +338,17 @@ function initChart(chartType){
   
 
   option && myChart.setOption(option);
+
+  myChart.on('click', function (params) {
+    // 获取搜索输入框和搜索按钮的DOM元素
+    var searchInput = document.getElementById('search-input');
+    var searchButton = document.getElementById('search-button');
+
+    // 将被点击的柱形图的数据名称设置到搜索输入框中
+    searchInput.value = params.name;
+
+    // 执行搜索按钮的点击事件
+    searchButton.click();
+  });
 
 }
