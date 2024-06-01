@@ -245,7 +245,7 @@ function initChart(chartType){
           '病理学(甲)',
           '医学影像学',
           '生物化学(甲)',
-          '债法总论'
+          '人体解剖学'
         ],
         axisLabel: {
           interval: 0,
