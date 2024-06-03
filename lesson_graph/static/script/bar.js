@@ -5,10 +5,10 @@ function initChart(chartType){
   var option;
 
   if(chartType==='计算机与计算科学学院'){
-    chartTitle.innerHTML = '计算机与计算科学学院课程综合难度评分最高/最低（五项）';
+    chartTitle.innerHTML = '计算机与计算科学学院 课程综合难度评分最高/最低（五项）';
     option = {
       grid: {
-        left: '30%', // 增加左边距
+        left: '25%', // 增加左边距
         // right: '10%', // 增加右边距
         top: '10%', // 增加上边距
         bottom: '10%' // 增加下边距
@@ -18,9 +18,9 @@ function initChart(chartType){
         data: [
           '机器人基础知识科普',
           '数学建模实用技术基础',
-          '零基础ANDROID移动应用开发',
           'ACM程序设计进阶训练',
-          'PHOTOSHOP数码照片处理实用技术',
+          '零基础ANDROID移动应用开发',
+          'IT创新思维与方法',
           '数据库原理',
           '计算机网络原理与实验',
           '程序化交易',
@@ -40,61 +40,61 @@ function initChart(chartType){
         {
           data: [
             {
-              value: 0.0547,
+              value: 0.0673,
               itemStyle: {
                 color: 'green'
               }
             },
             {
-              value: 0.0832,
+              value: 0.0959,
               itemStyle: {
                 color: 'green'
               }
             },
             {
-              value: 0.0889,
+              value: 0.1058,
               itemStyle: {
                 color: 'green'
               }
             },
             {
-              value: 0.0931,
+              value: 0.1142,
               itemStyle: {
                 color: 'green'
               }
             },
             {
-              value: 0.1037,
+              value: 0.1240,
               itemStyle: {
                 color: 'green'
               }
             },
             {
-              value: 0.9547,
+              value: 0.9928,
               itemStyle: {
                 color: '#a90000'
               }
             },
             {
-              value: 0.8626,
+              value: 0.9007,
               itemStyle: {
                 color: '#a90000'
               }
             },
             {
-              value: 0.7868,
+              value: 0.7995,
               itemStyle: {
                 color: '#a90000'
               }
             },
             {
-              value: 0.6695,
+              value: 0.7076,
               itemStyle: {
                 color: '#a90000'
               }
             },
             {
-              value: 0.6249,
+              value: 0.6503,
               itemStyle: {
                 color: '#a90000'
               }
@@ -115,7 +115,7 @@ function initChart(chartType){
       ]
     };
   }else if(chartType==='法学院'){
-    chartTitle.innerHTML = '法学院课程综合难度评分最高/最低（五项）';
+    chartTitle.innerHTML = '法学院 课程综合难度评分最高/最低（五项）';
     option = {
       grid: {
         left: '20%', // 增加左边距
@@ -225,7 +225,7 @@ function initChart(chartType){
       ]
     };
   }else if(chartType==='医学院'){
-    chartTitle.innerHTML = '医学院课程综合难度评分最高/最低（五项）';
+    chartTitle.innerHTML = '医学院 课程综合难度评分最高/最低（五项）';
     option = {
       grid: {
         left: '25%', // 增加左边距
