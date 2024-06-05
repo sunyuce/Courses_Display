@@ -266,7 +266,7 @@
             const selectedSchool = this.value;
 
             toggleLoader(true);
-            fetch(`/?school=${selectedSchool}`, {
+            fetch(`/Web/?school=${selectedSchool}`, {
                 headers: {
                     'X-Requested-With': 'XMLHttpRequest'
                 }

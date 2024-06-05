@@ -18,11 +18,12 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from graph.views import Web,get_graph_data
+# from lesson_graph.graph.views import Web,get_graph_data
+from graph.views import Web
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("Web",Web)
+    path("Web/",Web),
     # path('graph/', include('graph.urls')),
 ]
 
