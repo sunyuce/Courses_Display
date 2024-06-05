@@ -18,7 +18,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from graph.views import Web
+from graph.views import Web,get_graph_data
 
 urlpatterns = [
     path('admin/', admin.site.urls),
