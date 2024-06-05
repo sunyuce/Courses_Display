@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-+bi891w1tbsz+!uyuxq!m#ttaph*al4&w6kl5)b9!b#h#g=-ch"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -129,9 +129,62 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# 指定默认主题
-SIMPLEUI_DEFAULT_THEME = 'admin.design.css'
+# 设置默认主题，指向主题css文件名。紫色风格
+SIMPLEUI_DEFAULT_THEME = 'purple.css'
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static"),
-# ]
+# 去掉默认Logo或换成自己Logo链接
+SIMPLEUI_LOGO = 'https://img.zcool.cn/community/011c9d57eaa4bca84a0d304f91500b.png@1280w_1l_2o_100sh.png' 
+
+# 更改默认语言为中文
+LANGUAGE_CODE = 'zh-hans'
+
+# 更改时区为上海
+TIME_ZONE = 'Asia/Shanghai'
+
+# 隐藏右侧SimpleUI广告链接和使用分析
+SIMPLEUI_HOME_INFO = False
+SIMPLEUI_ANALYSIS = False
+
+SIMPLEUI_CONFIG = {
+    # 是否使用系统默认菜单。
+    'system_keep': False,
+    
+    # 用于菜单排序和过滤, 不填此字段为默认排序和全部显示。 空列表[] 为全部不显示.
+    'menu_display': ['课程分析', '权限认证'],
+    
+    # 设置是否开启动态菜单, 默认为False. 如果开启, 则会在每次用户登陆时刷新展示菜单内容。
+    # 一般建议关闭。
+    'dynamic': False,
+    'menus': [
+        {
+            'app': 'auth',
+            'name': '权限认证',
+            'icon': 'fas fa-user-shield',
+            'models': [
+                {
+                'name': '用户列表',
+                'icon': 'fa fa-user',
+                'url': 'auth/user/'
+                },
+                {
+                    'name': '用户组',
+                    'icon': 'fa fa-th-list',
+                    'url': 'auth/group/'
+                }
+            ]
+        },
+
+        {
+            'name': '课程分析',
+            'icon': 'fa fa-th-list',
+            'models': [
+                {
+                'name': '课程情况',
+                # 注意url按'/admin/应用名小写/模型名小写/'命名。  
+                'url': '/Web',
+                'icon': 'fa fa-tasks'
+                },
+            ]
+        },
+    ]
+}

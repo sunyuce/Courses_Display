@@ -59,4 +59,7 @@ def get_graph_data(request):
         return JsonResponse(context)
     else:
         return render(request, 'graph/test_delicate.html', context)
+    
+def Web(request):
+    return render(request,"graph/test_delicate.html")
 
