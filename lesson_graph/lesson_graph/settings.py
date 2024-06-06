@@ -168,7 +168,7 @@ SIMPLEUI_CONFIG = {
                 },
                 {
                     'name': '用户组',
-                    'icon': 'fa fa-th-list',
+                    'icon': 'fa fa-users',
                     'url': 'auth/group/'
                 }
             ]
