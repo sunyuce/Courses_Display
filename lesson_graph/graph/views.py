@@ -115,6 +115,61 @@ def Web(request):
         return JsonResponse(context)
     else:
         return render(request, 'graph/test_delicate.html', context)
-    # return render(request,"graph/test_delicate.html")
+
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.shortcuts import render, redirect, get_object_or_404
+from neomodel import db
+from .models import LessonNode
+
+def lesson_nodes(request):
+    classname = request.GET.get('classname', '')
+    school = request.GET.get('school', '')
+
+    nodes = LessonNode.nodes.all()
+
+    if classname:
+        nodes = [node for node in nodes if classname.lower() in node.classname.lower()]
+    if school:
+        nodes = [node for node in nodes if school.lower() in node.school.lower()]
+
+    paginator = Paginator(nodes, 20)  # 每页显示 20 个节点
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'graph/lesson_nodes.html', {'nodes': page_obj, 'classname': classname, 'school': school})
+
+def create_node(request):
+    if request.method == 'POST':
+        classname = request.POST.get('classname')
+        school = request.POST.get('school')
+        node = LessonNode(classname=classname, school=school)
+        node.save()
+        return redirect('lesson_nodes')
+    return render(request, 'graph/create_node.html')
+
+
+def delete_node(request, node_id):
+    query = f"MATCH (n) WHERE elementId(n)='{node_id}' DETACH DELETE n"
+    db.cypher_query(query)
+    return redirect(request.META.get('HTTP_REFERER', 'lesson_nodes'))
+
+
+def update_node(request, node_id):
+    if request.method == 'POST':
+        classname = request.POST.get('classname')
+        school = request.POST.get('school')
+        query = f"MATCH (n) WHERE elementId(n)='{node_id}' RETURN n"
+        results, _ = db.cypher_query(query)
+        node = LessonNode.inflate(results[0][0])
+        if node:
+            node.classname = classname
+            node.school = school
+            node.save()
+        return redirect('lesson_nodes')
+    else:
+        query = f"MATCH (n) WHERE elementId(n)='{node_id}' RETURN n"
+        results, _ = db.cypher_query(query)
+        node = LessonNode.inflate(results[0][0])
+        return render(request, 'graph/update_node.html', {'node': node})
 
 

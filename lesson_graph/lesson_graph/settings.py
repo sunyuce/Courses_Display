@@ -82,7 +82,9 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-
+NEO4J_BOLT_URL = 'bolt://localhost:7687'
+NEO4J_USERNAME = 'neo4j'
+NEO4J_PASSWORD = '32101151'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -182,6 +184,12 @@ SIMPLEUI_CONFIG = {
                 'name': '课程情况',
                 # 注意url按'/admin/应用名小写/模型名小写/'命名。  
                 'url': '/Web/',
+                'icon': 'fa fa-tasks'
+                },
+                {
+                'name': '课程节点管理',
+                # 注意url按'/admin/应用名小写/模型名小写/'命名。
+                'url': '/graph/',
                 'icon': 'fa fa-tasks'
                 },
             ]
