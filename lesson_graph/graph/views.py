@@ -172,4 +172,6 @@ def update_node(request, node_id):
         node = LessonNode.inflate(results[0][0])
         return render(request, 'graph/update_node.html', {'node': node})
 
+def Chat(request):
+    return render(request, 'graph/Chat.html')
 

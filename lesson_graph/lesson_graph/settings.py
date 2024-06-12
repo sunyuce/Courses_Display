@@ -152,7 +152,7 @@ SIMPLEUI_CONFIG = {
     'system_keep': False,
     
     # 用于菜单排序和过滤, 不填此字段为默认排序和全部显示。 空列表[] 为全部不显示.
-    'menu_display': ['课程分析', '权限认证'],
+    'menu_display': ['课程分析', '智能问答','权限认证'],
     
     # 设置是否开启动态菜单, 默认为False. 如果开启, 则会在每次用户登陆时刷新展示菜单内容。
     # 一般建议关闭。
@@ -190,7 +190,19 @@ SIMPLEUI_CONFIG = {
                 'name': '课程节点管理',
                 # 注意url按'/admin/应用名小写/模型名小写/'命名。
                 'url': '/graph/',
-                'icon': 'fa fa-tasks'
+                'icon': 'fa fa-gears'
+                },
+            ]
+        },
+        {
+            'name': '智能问答',
+            'icon': 'fa fa-search',
+            'models': [
+                {
+                'name': '星火小助手',
+                # 注意url按'/admin/应用名小写/模型名小写/'命名。  
+                'url': '/Chat/',
+                'icon': 'fa fa-spinner'
                 },
             ]
         },
