@@ -207,25 +207,5 @@ SIMPLEUI_CONFIG = {
                 },
             ]
         },
-
-        {
-            'name': '智能系统',
-            'icon': 'fa fa-th-list',
-            'url': '/question/'
-            # 'models': [
-            #     {
-            #     'name': '课程情况',
-            #     # 注意url按'/admin/应用名小写/模型名小写/'命名。
-            #     'url': '/Web/',
-            #     'icon': 'fa fa-tasks'
-            #     },
-            #     {
-            #     'name': '课程节点管理',
-            #     # 注意url按'/admin/应用名小写/模型名小写/'命名。
-            #     'url': '/graph/',
-            #     'icon': 'fa fa-tasks'
-            #     },
-            # ]
-        },
     ]
 }

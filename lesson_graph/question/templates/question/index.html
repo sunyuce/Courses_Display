@@ -461,8 +461,6 @@
             }
         }
 
-
-
         function sendMessage() {
             const userInputText = userInput.value.trim();
             if (userInputText !== '') {
@@ -475,42 +473,6 @@
             }
         }
 
-        // async function fetchBackend(userInputText, messageId) {
-        //     const response = await fetch('/query', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         },
-        //         body: JSON.stringify({ query: userInputText })
-        //     });
-        //
-        //     const responseData = await response.json();
-        //     const answer = responseData.answer;
-        //
-        //     const loadingMessage = document.getElementById(messageId);
-        //     loadingMessage.textContent = answer;
-        //
-        //     if (currentSessionId) {
-        //         // 从localStorage中获取所有会话数据，如果没有数据则初始化为空数组
-        //         const sessions = JSON.parse(localStorage.getItem('sessions')) || [];
-        //         // 找到当前会话的索引
-        //         const sessionIndex = sessions.findIndex(session => session.id === currentSessionId);
-        //         if (sessionIndex !== -1) {
-        //             // 获取当前会话
-        //             const session = sessions[sessionIndex];
-        //             // 从chatBox中获取所有消息，并将其转换为包含角色和内容的对象数组
-        //             session.messages = [...chatBox.querySelectorAll('.chat-message')].map(msg => {
-        //                 const role = msg.classList.contains('user') ? 'user' : 'bot';
-        //                 const p = msg.querySelector('p');
-        //                 // 如果消息中包含loading-spinner，则内容为空，否则获取<p>的HTML内容
-        //                 const content = p.querySelector('.loading-spinner') ? '' : p.innerHTML;
-        //                 return { role, content };
-        //             });
-        //             // 将更新后的会话数据保存回localStorage
-        //             localStorage.setItem('sessions', JSON.stringify(sessions));
-        //         }
-        //     }
-        // }
         async function fetchBackend(userInputText, messageId) {
             try {
                 const response = await fetch('http://127.0.0.1:8000/question/query', {
