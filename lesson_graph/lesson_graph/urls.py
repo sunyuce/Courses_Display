@@ -18,11 +18,12 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from graph.views import Web
+from graph.views import Web,Chat
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("Web/",Web),
+    path("Chat/",Chat),
     path('graph/', include('graph.urls')),
     path('question/', include('question.urls'))
 ]
