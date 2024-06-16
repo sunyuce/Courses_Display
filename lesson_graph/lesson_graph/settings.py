@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'graph',
+    "question",
 ]
 
 MIDDLEWARE = [
@@ -193,6 +194,26 @@ SIMPLEUI_CONFIG = {
                 'icon': 'fa fa-tasks'
                 },
             ]
+        },
+
+        {
+            'name': '智能系统',
+            'icon': 'fa fa-th-list',
+            'url': '/question/'
+            # 'models': [
+            #     {
+            #     'name': '课程情况',
+            #     # 注意url按'/admin/应用名小写/模型名小写/'命名。
+            #     'url': '/Web/',
+            #     'icon': 'fa fa-tasks'
+            #     },
+            #     {
+            #     'name': '课程节点管理',
+            #     # 注意url按'/admin/应用名小写/模型名小写/'命名。
+            #     'url': '/graph/',
+            #     'icon': 'fa fa-tasks'
+            #     },
+            # ]
         },
     ]
 }

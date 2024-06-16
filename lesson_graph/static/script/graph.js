@@ -14,21 +14,6 @@ document.getElementById('school-select').addEventListener('change', function() {
     });
 });
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     const selectedSchool = document.getElementById('school-select').value;
-//     toggleLoader(true);
-//     fetch(`/?school=${selectedSchool}`, {
-//         headers: {
-//             'X-Requested-With': 'XMLHttpRequest'
-//         }
-//     })
-//     .then(response => response.json())
-//     .then(data => {
-//         updateGraph(data.nodes, data.edges);
-//         toggleLoader(false);
-//     });
-// });
-
 const width = document.getElementById('graph').clientWidth;
 const height = document.getElementById('graph').clientHeight;
 

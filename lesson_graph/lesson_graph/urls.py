@@ -24,5 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("Web/",Web),
     path('graph/', include('graph.urls')),
+    path('question/', include('question.urls'))
 ]
 
