@@ -19,9 +19,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from lesson_graph.views import Web
+from django.shortcuts import redirect
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', lambda request: redirect('admin/', permanent=True)),
     path("Web/",Web),
     # path("Chat/",Chat),
     path('lesson_graph/', include('lesson_graph.urls')),
