@@ -23,7 +23,7 @@ from graph.views import Web,Chat
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("Web/",Web),
-    path("Chat/",Chat),
+    # path("Chat/",Chat),
     path('graph/', include('graph.urls')),
     path('question/', include('question.urls'))
 ]

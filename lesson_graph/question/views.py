@@ -21,6 +21,7 @@ import json
 text = []
 # 在全局定义一个列表，用于缓存消息
 message_cache = []
+answer= []
 
 class Ws_Param(object):
     # 初始化
@@ -98,7 +99,7 @@ def on_message(ws, message):
         status = choices["status"]
         content = choices["text"][0]["content"]
         print(content, end='')
-        global answer
+        # global answer
         answer += content
         if status == 2:
             print()

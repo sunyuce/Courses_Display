@@ -202,7 +202,7 @@ SIMPLEUI_CONFIG = {
                 {
                 'name': '星火小助手',
                 # 注意url按'/admin/应用名小写/模型名小写/'命名。  
-                'url': '/Chat/',
+                'url': '/question/',
                 'icon': 'fa fa-spinner'
                 },
             ]
