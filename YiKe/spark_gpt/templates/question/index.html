@@ -77,19 +77,79 @@
         background-color: #f1f1f1;
         color: #333;
       }
+      .input-group {
+        display: flex;
+        align-items: center;
+        border: none;
+        /* border-radius: 2px; */
+        padding: 5px;
+        background-color: #f9f9f9;
+    }
       .chat-input {
         display: flex;
-        padding: 10px;
+        align-items: center;
+        padding: 5px;
         border-top: 1px solid #eee;
         background-color: #f9f9f9;
+        flex: 1;
       }
       .chat-input input {
         flex: 1;
         padding: 10px;
         border: none;
         border-radius: 20px;
-        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
         margin-right: 10px;
+      }
+      .suggest-icon {
+        display: flex;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        position: relative; /* 保证tooltip可以相对于这个元素定位 */
+      }
+      .tooltip {
+        display: none;
+        position: absolute;
+        bottom: calc(100%);
+        left: 80%;
+        transform: translateX(-50%);
+        background-color: black;
+        color: white;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 12px;
+        white-space: nowrap; /* 防止文字换行 */
+      }
+      .suggest-icon:hover .tooltip {
+        display: block;
+      }
+      .suggest-box {
+        display: none;
+        position: absolute;
+        bottom: 60px;
+        left: 4px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        width: 200px;
+        overflow: hidden;
+        flex-direction: column;
+      }
+      .suggest-box.show {
+        display: flex;
+      }
+      .suggest-box p {
+        padding: 10px;
+        margin: 0;
+        cursor: pointer;
+        border-bottom: 1px solid #eee;
+      }
+      .suggest-box p:last-child {
+        border-bottom: none;
+      }
+      .suggest-box p:hover {
+        background-color: #f0f0f0;
       }
       .chat-input textarea {
         font-family: Arial, sans-serif; /* 设置字体 */
@@ -102,6 +162,8 @@
         margin-right: 10px;
         overflow: visible;
         line-height: 1.5; /* 调整行高以适应多行文本 */
+        resize: none;
+        overflow: hidden;
       }
       .chat-input button {
         padding: 10px 20px;
@@ -259,14 +321,27 @@
       <div class="chat-box" id="chat-box">
         <!-- Chat messages will be dynamically added here -->
       </div>
-      <div class="chat-input">
-        <textarea
-          id="user-input"
-          placeholder="在此输入你的问题..."
-          rows="1"
-          style="resize: none"></textarea>
-        <button onclick="sendMessage()">发送</button>
+      <div class="input-group">
+        <div class="suggest-icon">
+          <img src="../../../static/question/建议.png" alt="Suggestions" />
+          <div class="tooltip">你可能想问</div>
+          <div class="suggest-box" id="suggest-box">
+            <p onclick="fillInput('学习计算机视觉前要先学习哪些前置知识？')">学习计算机视觉前要先学习哪些前置知识？</p>
+            <p onclick="fillInput('如何提升我的微积分成绩？')">如何提升我的微积分成绩？</p>
+            <p onclick="fillInput('英语口语要怎么练习？')">英语口语要怎么练习？</p>
+          </div>
+        </div>
+
+        <div class="chat-input">
+          <textarea
+            id="user-input"
+            placeholder="在此输入你的问题..."
+            rows="1"
+            style="height: 20px;"></textarea>
+          <button onclick="sendMessage()">发送</button>
+        </div>
       </div>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -282,6 +357,29 @@
       }
 
       userInput.addEventListener('input', adjustTextareaHeight)
+
+      // 建议框显示和隐藏功能
+      const suggestIcon = document.querySelector('.suggest-icon');
+      const suggestBox = document.getElementById('suggest-box');
+      suggestIcon.addEventListener('click', () => {
+        event.stopPropagation(); // 阻止事件冒泡，避免立即隐藏建议框
+        suggestBox.classList.toggle('show');
+      });
+      // 点击文档任意地方隐藏建议框
+      document.addEventListener('click', (event) => {
+          const isClickInsideSuggestIcon = suggestIcon.contains(event.target);
+          const isClickInsideSuggestBox = suggestBox.contains(event.target);
+
+          if (!isClickInsideSuggestIcon && !isClickInsideSuggestBox) {
+              suggestBox.classList.remove('show');
+          }
+      });
+      // 填充输入框功能
+      function fillInput(question) {
+        const userInput = document.getElementById('user-input');
+        userInput.value = question;
+        suggestBox.classList.remove('show');
+      }
 
       function loadSessions() {
         let sessions = JSON.parse(localStorage.getItem('sessions')) || []
