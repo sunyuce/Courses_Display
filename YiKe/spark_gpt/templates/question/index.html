@@ -499,7 +499,11 @@
 
       async function fetchBackend(userInputText, messageId) {
         try {
+<<<<<<< Updated upstream:YiKe/spark_gpt/templates/question/index.html
           const response = await fetch('http://127.0.0.1:8000/spark_gpt/query/', {
+=======
+          const response = await fetch('http://127.0.0.1:8000/question/query', {
+>>>>>>> Stashed changes:lesson_graph/question/templates/question/index.html
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
